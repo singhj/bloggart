@@ -19,9 +19,6 @@ import logging
 import re
 from cStringIO import StringIO
 
-# Bloggart is currently based on Django 0.96
-from google.appengine.dist import use_library
-use_library('django', '0.96')
 from django.utils import html
 from django.utils import text
 
@@ -80,6 +77,7 @@ MARKUP_MAP = {
 
 def get_renderer(post):
   """Returns a render function for this posts body markup."""
+#  logging.info('\n****  %s --> %s ****\n', post.body_markup, MARKUP_MAP.get(post.body_markup)[0])
   return MARKUP_MAP.get(post.body_markup)[1]
 
 
@@ -94,7 +92,9 @@ def clean_content(content):
 def render_body(post):
   """Return the post's body rendered to HTML."""
   renderer = get_renderer(post)
-  return renderer(clean_content(post.body))
+  renderin = clean_content(post.body)
+  rendered = renderer(renderin)
+  return rendered
 
 
 def render_summary(post):

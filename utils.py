@@ -1,31 +1,19 @@
 import os
 import re
+import logging
 import unicodedata
 from datetime import datetime
 
 from google.appengine.api import memcache
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp.template import _swap_settings
 
-# Bloggart is currently based on Django 0.96
-from google.appengine.dist import use_library
-use_library('django', '0.96')
 import django.conf
 from django import template
 from django.template import loader
 
 import config
 
-BASE_DIR = os.path.dirname(__file__)
-
-if isinstance(config.theme, (list, tuple)):
-  TEMPLATE_DIRS = config.theme
-else:
-  TEMPLATE_DIRS = [os.path.abspath(os.path.join(BASE_DIR, 'themes/default'))]
-  if config.theme and config.theme != 'default':
-    TEMPLATE_DIRS.insert(0,
-                         os.path.abspath(os.path.join(BASE_DIR, 'themes', config.theme)))
-
+os.environ['DJANGO_SETTINGS_MODULE'] = 'config'
 
 def slugify(s):
   s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
@@ -70,14 +58,9 @@ def get_template_vals_defaults(template_vals=None):
 def render_template(template_name, template_vals=None, theme=None):
   template_vals = get_template_vals_defaults(template_vals)
   template_vals.update({'template_name': template_name})
-  old_settings = _swap_settings({'TEMPLATE_DIRS': TEMPLATE_DIRS})
-  try:
-    tpl = loader.get_template(template_name)
-    rendered = tpl.render(template.Context(template_vals))
-  finally:
-    _swap_settings(old_settings)
+  tpl = loader.get_template(template_name)
+  rendered = str(tpl.render(template.Context(template_vals)))
   return rendered
-
 
 def _get_all_static_content_data():
   import static

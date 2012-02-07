@@ -51,8 +51,8 @@
             </ul>
         </div>
     {% endif %}
-    
-  {{post.rendered}}
+    <br>
+  {{post.rendered|safe}}
   
   <p class="postmeta">
     <span class="date">{{post.published_tz|date:config.date_format}}</span>

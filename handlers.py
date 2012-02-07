@@ -12,10 +12,7 @@ import post_deploy
 import utils
 from generators import generator_list
 
-# Bloggart is currently based on Django 0.96
-from google.appengine.dist import use_library
-use_library('django', '0.96')
-from django import newforms as forms
+from django import forms
 from google.appengine.ext.db import djangoforms
 
 
@@ -137,7 +134,7 @@ class PostHandler(BaseHandler):
                     initial={'draft': post and post.published is None})
     if form.is_valid():
       post = form.save(commit=False)
-      if form.clean_data['draft']:
+      if form.cleaned_data['draft']:
         # Post is marked as DRAFT
         post.published = datetime.datetime.max
         post.put()
@@ -156,7 +153,7 @@ class PostHandler(BaseHandler):
       self.render_to_response("published.html", {
           'content': post,
           'type' : 'post',
-          'draft': form.clean_data['draft']})
+          'draft': form.cleaned_data['draft']})
     else:
       self.render_form(form)
 

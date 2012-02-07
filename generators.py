@@ -1,6 +1,6 @@
 import datetime
 import itertools
-import os
+import os, logging
 import urllib
 from google.appengine.api import urlfetch
 from google.appengine.ext import db

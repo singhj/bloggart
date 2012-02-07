@@ -40,7 +40,7 @@ h1, h2, h3, h4 {
 	padding: 10px 15px 7px 15px;	 
 }
 h1 { font-size: 3.0em; font-weight: normal; letter-spacing: -2px; }
-h2 { font-size: 2.8em; font-weight: normal; color: #663333; }
+h2 { font-size: 2.4em; font-weight: normal; color: #663333; }
 h3 { font-size: 2em; font-weight: normal; letter-spacing: -0.5px; padding-top: 15px}
 h4 { font-size: 1.3em; }
 
@@ -98,7 +98,7 @@ blockquote {
    border: 1px solid #F0F0F0;
 	background: #f8f8f8 url(/static/{{ config.theme }}/images/quote.gif) no-repeat 12px 12px;
 	font-weight: normal;
-	font-size: 17px;
+	font-size: 100%;
 	line-height: 1.5em;
 	font-style: italic;
 	font-family: "Georgia", "Times New Roman", "Times", Serif;	
@@ -200,7 +200,7 @@ input.button {
 	position: relative;
 	margin: 0 auto;
 	background: url(/static/{{ config.theme }}/images/border.gif) repeat-x left bottom; 	
-	height: 302px;	
+	height: 240px;	
 }
 #header h1#logo-text { margin: 0; padding: 0; }
 #header h1#logo-text a {
@@ -232,7 +232,7 @@ input.button {
 }
 #header #header-image {
 	position: absolute;
-	background: url(/static/{{ config.theme }}/images/header-bloggart-watermark.png) top right no-repeat;
+	background: url(/static/{{ config.theme }}/images/header-bloggart-watermark.png) top right no-repeat; 
 	width: 400px;
 	height: 300px;	
 	right: 10px; top: 0;	
@@ -312,7 +312,6 @@ input.button {
 
 /* main column */
 #main h2 {
-	font: normal 3.7em Georgia, 'Times New Roman', Times, Serif;
 	color: #444;
 	letter-spacing: -2.2px;	
 	margin-left: 5px;	
@@ -328,7 +327,6 @@ input.button {
 /* left columns */
 #left-columns h3 {
 	color: #444;
-	font: normal 2em Georgia, 'Times New Roman', Times, Serif;
 	letter-spacing: -0.5px;
 	padding: 5px 10px;
 	margin: 12px 0 5px 0;
