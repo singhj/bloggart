@@ -12,7 +12,9 @@
         {% endfor %}
       {% endif %}
     </p>
+    <br />
     {{post.summary|safe}}
+    <div style="clear: both; "></div>
     <p class="postmeta">
       <a href="{{config.url_prefix}}{{post.path}}" class="readmore">Read more</a> |
       {% if config.disqus_forum %}

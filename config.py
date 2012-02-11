@@ -21,7 +21,6 @@ host = 'localhost:8080'
 # Selects the theme to use. Theme names correspond to directories under
 # the 'themes' directory, containing templates and static content.
 theme = 'default'
-TEMPLATE_DIRS = ('themes/' + theme, 'themes/common')
 
 # Defines the URL organization to use for blog postings. Valid substitutions:
 #   slug - the identifier for the post, derived from the title
@@ -122,3 +121,7 @@ date_format = "D j F Y"
 
 # Enable Sharing Buttons.
 sharing_buttons = True
+
+######################## DO NOT EDIT BELOW THIS LINE
+TEMPLATE_DIRS = ('themes/' + theme, 'themes/common')
+
